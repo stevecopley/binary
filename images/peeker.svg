@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="500px" height="500px" viewBox="0 0 500 500" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <rect width="500" height="500" id="artboard_1" />
+    <clipPath id="clip_1">
+      <use xlink:href="#artboard_1" clip-rule="evenodd" />
+    </clipPath>
+  </defs>
+  <g id="Artboard" clip-path="url(#clip_1)">
+    <use xlink:href="#artboard_1" stroke="none" fill="#000000" />
+    <path d="M0 225C0 100.736 100.736 0 225 0C349.264 0 450 100.736 450 225C450 349.264 349.264 450 225 450C100.736 450 0 349.264 0 225Z" transform="translate(25 25)" id="Ellipse" fill="#404040" fill-rule="evenodd" stroke="none" />
+    <path d="M0 200C0 89.543 89.543 0 200 0C310.457 0 400 89.543 400 200C400 310.457 310.457 400 200 400C89.543 400 0 310.457 0 200Z" transform="translate(50 50)" id="Ellipse-2" fill="#808080" fill-rule="evenodd" stroke="none" />
+    <path d="M0 175C0 78.3502 78.3502 0 175 0C271.65 0 350 78.3502 350 175C350 271.65 271.65 350 175 350C78.3502 350 0 271.65 0 175Z" transform="translate(75 75)" id="Ellipse-3" fill="#FFFFFF" fill-rule="evenodd" stroke="none" />
+    <g id="Group" transform="translate(168 96)">
+      <path d="M0 50C0 22.3858 22.3858 0 50 0C77.6142 0 100 22.3858 100 50C100 77.6142 77.6142 100 50 100C22.3858 100 0 77.6142 0 50Z" id="Ellipse" fill="#FFFFFF" fill-rule="evenodd" stroke="#000000" stroke-width="12" />
+      <path d="M0 0L20.5 145.5" transform="translate(61.5 99)" id="Line" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M0 0L77.7 1.5" transform="translate(71.8 121)" id="Line-2" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M1 0L1 83.5" transform="translate(148.5 37.5)" id="Line-3" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M0 137L53 0" transform="translate(10.5 122.5)" id="Line-4" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M0 155L32 0" transform="translate(50 244.5)" id="Line-5" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M81.5 155L0 0" transform="translate(82 244.5)" id="Line-6" fill="none" fill-rule="evenodd" stroke="#000000" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10Z" transform="translate(21 39.5)" id="Ellipse" fill="#000000" fill-rule="evenodd" stroke="none" />
+      <path d="M0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10Z" transform="translate(55 34.5)" id="Ellipse-2" fill="#000000" fill-rule="evenodd" stroke="none" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,130 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <title>Binary Numbers</title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body onload="setup();">
+
+    <header>
+        <h1>Binary Numbers</h1>
+
+        <nav>
+            <div class="buttons">
+                <button onclick="bitCount =  8; setup();">8</button>
+                <button onclick="bitCount = 16; setup();">16</button>
+                <button onclick="bitCount = 24; setup();">24</button>
+                <button onclick="bitCount = 32; setup();">32</button>
+                <button onclick="bitCount = 64; setup();">64</button>
+                Bits <input type="number" min="1" max="64" size="2" value="8" id="bit-input">
+            </div>
+
+            <div>            
+                <div>
+                    <label><input type="checkbox" onchange="toggleSigned();"      id="signed-toggle"> Signed</label>
+                    <label><input type="checkbox" onchange="togglePowers();"      id="power-toggle">  Powers</label>
+                    <label><input type="checkbox" onchange="toggleColHeadings();" id="column-toggle"> Columns</label>
+                </div>
+
+                <div>
+                    <label><input type="checkbox" onchange="toggleBin();" id="bin-toggle"> Binary</label>
+                    <label><input type="checkbox" onchange="toggleDec();" id="dec-toggle"> Decimal</label>
+                    <label><input type="checkbox" onchange="toggleHex();" id="hex-toggle"> Hexadecimal</label>
+                </div>
+
+                <div>
+                    <label><input type="checkbox" onchange="toggleChar();"     id="char-toggle">     Character</label>
+                    <label><input type="checkbox" onchange="toggleColour();"   id="colour-toggle">   Colour</label>
+                    <label><input type="checkbox" onchange="toggleAssembly();" id="assembly-toggle"> Instruction</label>
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <button onclick="incrementValue();">▲</button>
+                <button onclick="decrementValue();">▼</button>
+                <button onclick="minimumValue();">Min</button>
+                <button onclick="maximumValue();">Max</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="thebits">
+            <h2>Bits <span class="sub">(On / Off)</span></h2>
+            <div id="bits" class="value"></div>
+        </section>
+
+        <section id="binary">
+            <h2>Bin<span class="ending">ary</span> <span class="sub">(Base-2)</span></h2>
+            <div id="bin-value" class="value"></div>
+        </section>
+
+        <section id="hexadecimal">
+            <h2>Hex<span class="ending">adecimal</span> <span class="sub">(Base-16)</span></h2>
+            <div id="hex-value" class="value"></div>
+        </section>
+
+        <section id="decimal">
+            <h2>Dec<span class="ending">imal</span> <span class="sub">(Base-10)</span></h2>
+            <div id="dec-value" class="value"></div>
+        </section>
+
+        <section id="character">
+            <h2>Char<span class="ending">acter</span> <span class="sub">(<span id="char-type">ASCII</span>)</span></h2>
+            <div id="char-value" class="value group">
+                <span id="char-block">ASCII</span> <span id="char">A</span> <span id="char-info">info</span>
+            </div>
+        </section>
+
+        <section id="colour">
+            <h2><span id="colour-type">RGB</span><span class="ending"> Colour</span> <span class="sub">(<span id="colour-depth">24</span> Bit)</span></h2>
+            <div id="colour-value" class="value">
+                <div id="colour-code" class="group">
+                    <div id="colour-code-value">
+                        <span id="hex-hash">#</span><span id="red-code">00</span><span id="green-code">00</span><span id="blue-code">00</span><span id="alpha-code">00</span>
+                    </div>
+                    <div id="final-colour" class="colour-patch"></div>
+                </div>
+                <div id="red" class="colour-channel group">
+                    <div id="red-value">123</div>
+                    <div id="red-colour" class="colour-patch"></div>
+                </div>
+                <div id="green" class="colour-channel group">
+                    <div id="green-value">123</div>
+                    <div id="green-colour" class="colour-patch"></div>
+                </div>
+                <div id="blue" class="colour-channel group">
+                    <div id="blue-value">123</div>
+                    <div id="blue-colour" class="colour-patch"></div>
+                </div>
+                <div id="alpha" class="colour-channel group">
+                    <div id="alpha-value">123</div>
+                    <div id="alpha-colour" class="colour-patch"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="assembly">
+            <h2>Assembly<span class="ending"> Code</span> <span class="sub">(<span id="asm-type">x86</span>)</span></h2>
+            <div id="asm-value" class="value group">
+                <span id="asm-instruction">ADD</span>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/x86disasm.js"></script>
+    <script src="js/defs.js"></script>
+    <script src="js/binary.js"></script>
+</body>
+
+</html>
+

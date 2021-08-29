@@ -1,0 +1,532 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+/*** THEME ********************************************************/
+
+:root {
+    --back: #263238;
+    --back-high: #00000040;
+    --text: #eee;
+    --text-low: #999;
+    --accent: #69c;
+    --border: #666;
+    --border-high: #999;
+    --padding: #263238;
+    --bit-off: #000;
+    --bit-high: #6d672f;
+    --bit-on:  #FFEB3B;
+    --invalid: #EF5350;
+}
+
+
+/*** OVERALL ********************************************************/
+
+html {
+    color: var(--text);
+    background: var(--back);
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+}
+
+
+body {
+    min-height: 100vh;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+body > * {
+    min-width: 100%;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+}
+
+
+/*** HEADINGS ********************************************************/
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: var(--accent);
+    text-align: right;
+    width: 5rem;
+}
+
+h2 .ending {
+    display: none;
+}
+
+h2 .sub {
+    display: block;
+    font-size: 0.8em;
+    color: var(--text-low);
+}
+
+
+/*** HEADER ********************************************************/
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/*** NAV OPTIONS ********************************************************/
+
+nav {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav > div {
+    border: 1px solid var(--border);
+    min-height: 3rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+}
+
+nav > div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.0rem;
+    font-size: 0.93rem;
+    margin-top: -0.3rem;
+    margin-bottom: -0.3rem;
+}
+
+nav > div > div:not(:last-of-type) {
+    margin-right: 0.2rem;
+}
+
+nav div label {
+    color: var(--accent);
+    display: block;
+    white-space: nowrap;
+}
+
+nav div.buttons button {
+    display: block;
+    text-align: center;
+    min-width: 2.5rem;
+    background: var(--accent);
+    padding: 0.5rem;
+    font-size: 1.3rem;
+    color: var(--text);
+    text-decoration: none;
+    border-radius: 0.2rem;
+    border: none;
+}
+
+nav div.buttons button:hover {
+    background: var(--text);
+    color: var(--accent);
+}
+
+nav div.buttons input[type="number"] {
+    font-size: 1.3rem;
+    padding: 0.3rem 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+}
+
+
+/*** SECTIONS ********************************************************/
+
+section {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.5rem;
+    min-width: 100%;
+}
+
+
+/*** DATA VALUE BLOCKS ********************************************************/
+
+.value {
+    flex: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 0.8vw;
+}
+
+
+/*** GROUPS / BYTES ********************************************************/
+
+.group {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5vw;
+    border: 0.2vw solid var(--border);
+    border-radius: 0.5vw;
+    background: var(--back-high);
+}
+
+
+/*** NIBBLES ********************************************************/
+
+.nibble {
+    min-width: calc(60vw / 16);
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0.2vw;
+}
+
+.nibble:last-of-type:not(:first-of-type) {
+    padding-left: 0.3vw;
+}
+
+.nibble:first-of-type:not(:last-of-type) {
+    padding-right: 0.3vw;
+    border-right: 0.2vw dotted var(--border);
+}
+
+
+/*** DIGITS ********************************************************/
+
+.digit {
+    width: calc((100% - (0.2vw * 3)) / 4);
+    height: auto;
+    min-height: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#hex-value .digit { width: calc((100% - (0.2vw * 0)) / 1); }
+
+.digitvalue {
+    font-size: 1vw;
+    line-height: 1.0;
+}
+
+.value[data-units='1']  .digitvalue,
+.value[data-units='2']  .digitvalue,
+.value[data-units='4']  .digitvalue,
+.value[data-units='6']  .digitvalue,
+.value[data-units='8']  .digitvalue,
+.value[data-units='10'] .digitvalue,
+.value[data-units='12'] .digitvalue,
+.value[data-units='14'] .digitvalue { font-size: 5.0vw; }
+.value[data-units='16'] .digitvalue { font-size: 4.5vw; }
+.value[data-units='24'] .digitvalue { font-size: 3.5vw; }
+.value[data-units='32'] .digitvalue { font-size: 3.0vw; }
+.value[data-units='40'] .digitvalue { font-size: 2.5vw; }
+.value[data-units='48'] .digitvalue { font-size: 2.0vw; }
+.value[data-units='56'] .digitvalue { font-size: 1.5vw; }
+.value[data-units='64'] .digitvalue { font-size: 1.0vw; }
+
+
+/*** DIGIT LABELS ********************************************************/
+
+.value label {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 0.4vw;
+}
+
+.value[data-units='1']  label,
+.value[data-units='2']  label,
+.value[data-units='4']  label,
+.value[data-units='6']  label,
+.value[data-units='8']  label,
+.value[data-units='10'] label,
+.value[data-units='12'] label,
+.value[data-units='14'] label { font-size: 1.50vw; }
+.value[data-units='16'] label { font-size: 1.20vw; }
+.value[data-units='24'] label { font-size: 0.80vw; }
+.value[data-units='32'] label { font-size: 0.60vw; }
+.value[data-units='40'] label { font-size: 0.55vw; }
+.value[data-units='48'] label { font-size: 0.50vw; }
+.value[data-units='56'] label { font-size: 0.45vw; }
+.value[data-units='64'] label { font-size: 0.40vw; }
+
+.value label.colhead {
+    display: none;
+    color: var(--accent);
+    position: relative;
+    height: 1em;
+}
+
+.value label.colhead div {
+    position: absolute;
+    width: 100%;
+    transform: rotate(-15deg); 
+}
+
+.value[data-units='1']  label.colhead div,
+.value[data-units='2']  label.colhead div,
+.value[data-units='4']  label.colhead div,
+.value[data-units='6']  label.colhead div,
+.value[data-units='8']  label.colhead div,
+.value[data-units='10'] label.colhead div,
+.value[data-units='12'] label.colhead div,
+.value[data-units='14'] label.colhead div { 
+    transform: rotate(0); 
+}
+
+.value label.power {
+    padding-left: 0.1em;
+    color: var(--text-low);
+    display: none;
+}
+
+.value label.power sup {
+    color: var(--accent);
+    font-size: 0.7em;
+    margin-left: 0.1em;
+}
+
+.value label.colhead.visible,
+.value label.power.visible {
+    display: block;
+}
+
+.padding,
+.padding label.colhead,
+.padding label.power,
+.padding label.power sup {
+    cursor: default;
+    color: var(--padding);
+}
+
+
+/*** BITS ********************************************************/
+
+#bits .digitvalue {
+    font-size: 0;
+    width: 80%;
+    max-width: 5rem;
+    min-height: 2rem;
+    border-radius: 99rem;
+    /* border: 0.5vw solid var(--border); */
+    background: var(--bit-off);
+    cursor: pointer;
+}
+
+#bits .digitvalue:hover {
+    background: var(--bit-high);
+}
+
+#bits .digitvalue::before {
+    display: block;
+    content: "";
+    padding-top: 100%;
+}
+
+#bits .padding .digitvalue {
+    border-color: var(--padding);
+    background: var(--padding);
+    cursor: default;
+}
+
+#bits .digitvalue.on {
+    background: var(--bit-on);
+    border-color: var(--border-high);
+}
+
+
+/*** DECIMAL ********************************************************/
+
+#dec-value {
+    justify-content: center;
+}
+
+
+/*** SHOW / HIDE ********************************************************/
+
+#binary,
+#decimal,
+#hexadecimal,
+#character,
+#assembly,
+#colour {
+    display: none;
+}
+
+#binary.visible,
+#decimal.visible,
+#hexadecimal.visible,
+#character.visible,
+#assembly.visible,
+#colour.visible {
+    display: flex;
+}
+
+
+/*** CHARS ********************************************************/
+
+#char-value {
+    /* justify-content: center; */
+    gap: 1vw;
+    font-size: 5vw;
+    line-height: 1.0;
+}
+
+#char {
+    width: 15%;
+    text-align: center;
+}
+
+#char.control {
+    color: var(--accent);
+}
+
+#char-info,
+#char-block {
+    font-size: 0.5em;
+    color: var(--text-low);
+    width: 40%
+}
+
+#char-info {
+    text-align: right;
+}
+
+#char-info.invalid {
+    color: var(--invalid);
+}
+
+
+/*** ASSEMBLY ********************************************************/
+
+#asm-value {
+    height: 5vw;
+}
+
+#asm-instruction {
+    font-size: 1.5vw;
+    display: flex;
+    gap: 2vw;
+}
+
+#asm-instruction p {
+    display: flex;
+    gap: 1vw;
+}
+
+#asm-instruction .ophex {
+    color: var(--accent);
+}
+
+
+
+
+/*** COLOURS ********************************************************/
+
+.colour-patch {
+    width: 4.0vw;
+    height: 4.0vw;
+    border-radius: 0.8vw;
+    background: #000;
+}
+
+#colour-code, 
+#red,
+#green,
+#blue,
+#alpha {
+    gap: 1vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+#red-value,   #red-code   { color: #f44336; }
+#green-value, #green-code { color: #4CAF50; }
+#blue-value,  #blue-code  { color: #2196F3; }
+#alpha-value, #alpha-code { color: #B0BEC5; }
+
+
+#colour-code-value, 
+#red-value,
+#green-value,
+#blue-value,
+#alpha-value {
+    font-size: 3.5vw;
+}
+
+#final-colour {
+    position: relative;
+}
+
+#final-colour::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/peeker.svg');
+    background-size: cover;
+    border-radius: 0.8vw;
+    position: relative;
+    z-index: -1;
+}
+
+
+#colour-swatches {
+    height: 7vw;
+    position: relative;
+}
+
+#colour-swatches canvas:nth-child(2) {
+    position: absolute;
+    top: 0.5vw;
+    left: 0.5vw;
+}
+
+
+
+/*** RESPONSIVE ********************************************************/
+
+@media screen and (min-width: 720px) {
+    html {
+        font-size: 16px;
+    }
+
+    body {
+        padding: 2rem;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+        width: 12rem;
+    }
+
+    h2 .ending {
+        display: inline;
+    }
+}
