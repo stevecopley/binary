@@ -16,6 +16,8 @@
     --bit-high: #6d672f;
     --bit-on:  #FFEB3B;
     --invalid: #EF5350;
+    --ram-back: #607D8B;
+    --ram-low: #455A64;
 }
 
 
@@ -39,20 +41,6 @@ body {
     gap: 1.5rem;
 }
 
-body > * {
-    min-width: 100%;
-}
-
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    gap: 0.5rem;
-}
-
-
 /*** HEADINGS ********************************************************/
 
 h1 {
@@ -72,7 +60,7 @@ h2 .ending {
 
 h2 .sub {
     display: block;
-    font-size: 0.8em;
+    font-size: 0.6em;
     color: var(--text-low);
 }
 
@@ -85,6 +73,20 @@ header {
     gap: 2rem;
     justify-content: space-between;
     align-items: center;
+    min-width: calc(100vw - 2rem);
+}
+
+
+/*** MAIN ********************************************************/
+
+main {
+    min-width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    gap: 0.5rem;
 }
 
 
@@ -114,11 +116,11 @@ nav > div {
 nav > div > div {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 0.0rem;
+    justify-content: space-between;
     font-size: 0.93rem;
     margin-top: -0.3rem;
     margin-bottom: -0.3rem;
+    white-space: nowrap;
 }
 
 nav > div > div:not(:last-of-type) {
@@ -150,9 +152,10 @@ nav div.buttons button:hover {
 }
 
 nav div.buttons input[type="number"] {
-    font-size: 1.3rem;
-    padding: 0.3rem 0.5rem;
-    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    padding: 0.05rem 0.3rem;
+    margin-bottom: 0.2rem;
+    border-radius: 0.3rem;
     border: none;
 }
 
@@ -164,7 +167,7 @@ section {
     justify-content: flex-start;
     align-items: center;
     gap: 1.5rem;
-    min-width: 100%;
+    min-width: calc(100vw - 2rem);
 }
 
 
@@ -173,7 +176,7 @@ section {
 .value {
     flex: 1;
     display: flex;
-    justify-content: space-evenly;
+    /* justify-content: space-evenly; */
     align-items: center;
     gap: 0.8vw;
 }
@@ -361,15 +364,9 @@ section {
 }
 
 
-/*** DECIMAL ********************************************************/
-
-#dec-value {
-    justify-content: center;
-}
-
-
 /*** SHOW / HIDE ********************************************************/
 
+#ram,
 #binary,
 #decimal,
 #hexadecimal,
@@ -379,6 +376,7 @@ section {
     display: none;
 }
 
+#ram.visible,
 #binary.visible,
 #decimal.visible,
 #hexadecimal.visible,
@@ -392,14 +390,13 @@ section {
 /*** CHARS ********************************************************/
 
 #char-value {
-    /* justify-content: center; */
     gap: 1vw;
     font-size: 5vw;
     line-height: 1.0;
 }
 
 #char {
-    width: 15%;
+    width: 20%;
     text-align: center;
 }
 
@@ -409,9 +406,9 @@ section {
 
 #char-info,
 #char-block {
-    font-size: 0.5em;
+    font-size: 0.4em;
     color: var(--text-low);
-    width: 40%
+    width: 35%
 }
 
 #char-info {
@@ -456,6 +453,14 @@ section {
     background: #000;
 }
 
+#colour-value {
+    flex-wrap: wrap;
+}
+
+#colour-code {
+    min-width: 100%;
+}
+
 #colour-code, 
 #red,
 #green,
@@ -464,6 +469,7 @@ section {
     gap: 1vw;
     padding-left: 1vw;
     padding-right: 1vw;
+    justify-content: center;
 }
 
 #red-value,   #red-code   { color: #f44336; }
@@ -510,15 +516,73 @@ section {
 
 
 
+/*** RAM ********************************************************/
+
+#ram-stick {
+    flex: 1;
+    max-width: 600px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#ram-stick img {
+    width: 100%;
+    max-width: 600px;
+}
+
+#ram-overlay {
+    position: absolute;
+    top: 20%;
+    bottom: 40%;
+    left: 7%;
+    right: 7%;
+    max-width: calc(600px - (2 * 7%));
+    /* background: #ff000080; */
+    display: flex;
+    gap: 8.5%;
+    justify-content: flex-end;
+}
+
+#ram-overlay .ram-block {
+    width: calc((100% - (3 * 8.5%)) / 4);
+    padding: 0.2vw;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: var(--ram-back);
+}
+
+#ram-overlay .ram-bit {
+    width: calc(100% / 16);
+    height: calc(100% / 8);
+    background: var(--ram-low);
+    border: 1px solid var(--ram-back);
+}
+
+#ram-overlay .ram-bit.on {
+    background: var(--bit-on);
+}
+
+
+
 /*** RESPONSIVE ********************************************************/
 
 @media screen and (min-width: 720px) {
+
     html {
         font-size: 16px;
     }
 
     body {
         padding: 2rem;
+    }
+
+    header, 
+    section {
+        min-width: calc(100vw - 4rem);
     }
 
     h2 {
@@ -529,4 +593,13 @@ section {
     h2 .ending {
         display: inline;
     }
+
+    #colour-value {
+        flex-wrap: nowrap;
+    }
+
+    #colour-code {
+        min-width: auto;
+    }
+
 }

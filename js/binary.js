@@ -1,9 +1,13 @@
+const ram          = document.getElementById( 'ram' );
 const binary       = document.getElementById( 'binary' );
 const decimal      = document.getElementById( 'decimal' );
 const hexadecimal  = document.getElementById( 'hexadecimal' );
 const character    = document.getElementById( 'character' );
 const assembly     = document.getElementById( 'assembly' );
 const colour       = document.getElementById( 'colour' );
+
+const ramContainer = document.getElementById( 'ram-stick' );
+const ramOverlay   = document.getElementById( 'ram-overlay' );
 
 const bitContainer = document.getElementById( 'bits' );
 const binContainer = document.getElementById( 'bin-value' );
@@ -37,6 +41,7 @@ const alpCode      = document.getElementById( 'alpha-code' );
 const finalColour  = document.getElementById( 'final-colour' );
 
 const bitInput     = document.getElementById( 'bit-input' );
+const ramToggle    = document.getElementById( 'ram-toggle' );
 const binToggle    = document.getElementById( 'bin-toggle' );
 const decToggle    = document.getElementById( 'dec-toggle' );
 const hexToggle    = document.getElementById( 'hex-toggle' );
@@ -53,6 +58,8 @@ let bitCount = 8;
 let options = {
     signed:      { active: false, toggle: signedToggle, block: null },
     
+    ram:         { active: true,  toggle: ramToggle,    block: ram },
+
     binary:      { active: true,  toggle: binToggle,    block: binary },
     decimal:     { active: true,  toggle: decToggle,    block: decimal },
     hexadecimal: { active: false, toggle: hexToggle,    block: hexadecimal },
@@ -70,13 +77,14 @@ let maxValue;
 let maxSignedValue;
 
 let bits = [];
+let ramBits = [];
 let binDigits = [];
 let hexDigits = [];
 let decValue = [];
 
 bitInput.addEventListener( 'change', () => {
     bitCount = Math.max( bitInput.value, 1 );
-    bitCount = Math.min( bitCount, 1024 );
+    bitCount = Math.min( bitCount, 512 );
     setup();
 } );
 
@@ -87,27 +95,50 @@ function setup() {
     maxValue       = (BigInt( 2 ) ** BigInt( bitCount )) - 1n;
     maxSignedValue = (BigInt( 2 ) ** BigInt( bitCount - 1 )) - 1n;
 
-    // Setup the bits
+    setupRAM();
+
     bits = setupNumber( bitContainer, 2, true, false );
 
-    // Setup numbers
     binDigits = setupNumber( binContainer, 2 );
     hexDigits = setupNumber( hexContainer, 16 );
     decValue  = setupNumber( decContainer, 10, false, false );
 
-    // Setup colour stuff
     setupColours();
-
-    // Setup disassembler
     setupAssembly();
 
     // Setup controls
     bitInput.value = bitCount;
 
+    // Disable options as required
     if( !colourInfo[bitCount] )   options.colour.active = false;
     if( !assemblyInfo[bitCount] ) options.assembly.active = false;
+    if( bitCount > 24 )           options.character.active = false;
 
     update( 0 );
+}
+
+
+//----------------------------------------------------
+function setupRAM() {
+    ramOverlay.innerHTML = '';
+    ramBits = [];
+    const bitsToShow = Math.ceil( bitCount / 128 ) * 128
+    let ramBlock;
+
+    for (let i = 0; i < bitsToShow; i++) {
+        if( i % 128 == 0 ) {
+            ramBlock = document.createElement( 'div' );
+            ramBlock.classList.add( 'ram-block' );
+            ramOverlay.prepend( ramBlock );
+        }
+        const ramBit = document.createElement( 'div' );
+        ramBit.classList.add( 'ram-bit' );
+        ramBlock.append( ramBit );
+
+        if( i < bitCount ) {
+            ramBits.push( ramBit );
+        }
+    }
 }
 
 
@@ -242,8 +273,9 @@ function setupColours() {
 function update( newValue=null ) {
     const value = newValue == null ? getValue() : newValue;
 
-    updateNumber( bits,       2, value );
+    updateRAM( value );
 
+    updateNumber( bits,       2, value );
     updateNumber( binDigits,  2, value );
     updateNumber( hexDigits, 16, value );
     updateNumber( decValue,  10, value );
@@ -282,6 +314,22 @@ function getValue() {
 
 
 //----------------------------------------------------
+function updateRAM( value ) {
+    const valueBits = numberToBin( value, bitCount );
+
+    for( let i = 0; i < ramBits.length; i++ ) {
+        const ramBit = ramBits[i];
+        if( valueBits[bitCount-i-1] == '1' ) {
+            ramBits[i].classList.add( 'on' );
+        }
+        else {
+            ramBits[i].classList.remove( 'on' );
+        }
+    }
+}
+
+
+    //----------------------------------------------------
 function updateNumber( digits, base, value ) {
     if( base == 10 ) {
         if( options.signed.active && value > maxSignedValue ) {
@@ -498,8 +546,26 @@ function minimumValue() {
     update( options.signed.active ? maxSignedValue + 1n : 0n );
 }
 
+function randomValue() {
+    const binString = Array( bitCount )
+        .fill()
+        .map( () => Math.round( Math.random() ).toString( 2 ) )
+        .join( '' );
+
+    const randomValue = BigInt( `0b${binString}` );
+
+    console.log( binString );
+    console.log( randomValue );
+    update( randomValue );
+}
+
 
 //----------------------------------------------------
+function toggleRAM() {
+    options.ram.active = !options.ram.active;
+    update();
+}
+
 function toggleBin() {
     options.binary.active = !options.binary.active;
     update();
@@ -516,7 +582,12 @@ function toggleHex() {
 }
 
 function toggleChar() {
-    options.character.active = !options.character.active;
+    if( bitCount <= 24 && charToggle.checked ) {
+        options.character.active = true;
+    }
+    else {
+        options.character.active = false;
+    }
     update();
 }
 

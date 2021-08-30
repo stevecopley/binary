@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<svg width="800px" height="150px" viewBox="0 0 800 150" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <g id="HWire">
+        <line x1="0" y1="0" x2="150" y2="0" stroke="#ccc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+    <g id="VWire">
+        <line x1="0" y1="0" x2="0" y2="80" stroke="#ccc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+
+    <g id="Chip">
+        <use xlink:href="#VWire" x="10" y="0" />
+        <use xlink:href="#VWire" x="20" y="0" />
+        <use xlink:href="#VWire" x="30" y="0" />
+        <use xlink:href="#VWire" x="40" y="0" />
+        <use xlink:href="#VWire" x="50" y="0" />
+        <use xlink:href="#VWire" x="60" y="0" />
+        <use xlink:href="#VWire" x="70" y="0" />
+        <use xlink:href="#VWire" x="80" y="0" />
+        <use xlink:href="#VWire" x="90" y="0" />
+        <use xlink:href="#VWire" x="100" y="0" />
+        <use xlink:href="#VWire" x="110" y="0" />
+        <use xlink:href="#VWire" x="120" y="0" />
+        <use xlink:href="#VWire" x="130" y="0" />
+        <use xlink:href="#VWire" x="140" y="0" />
+
+        <use xlink:href="#HWire" x="0" y="10" />
+        <use xlink:href="#HWire" x="0" y="20" />
+        <use xlink:href="#HWire" x="0" y="30" />
+        <use xlink:href="#HWire" x="0" y="40" />
+        <use xlink:href="#HWire" x="0" y="50" />
+        <use xlink:href="#HWire" x="0" y="60" />
+        <use xlink:href="#HWire" x="0" y="70" />
+
+        <rect width="140" height="70" x="5" y="5" fill="#111111" />
+    </g>
+    
+    <g id="Connector">
+        <rect width="5" height="20" fill="#FFEB3B" />
+    </g>
+    
+    <g id="ConnectorBlock">
+        <use xlink:href="#Connector" x="0" y="0" />
+        <use xlink:href="#Connector" x="10" y="0" />
+        <use xlink:href="#Connector" x="20" y="0" />
+        <use xlink:href="#Connector" x="30" y="0" />
+        <use xlink:href="#Connector" x="40" y="0" />
+        <use xlink:href="#Connector" x="50" y="0" />
+        <use xlink:href="#Connector" x="60" y="0" />
+        <use xlink:href="#Connector" x="70" y="0" />
+    </g>
+
+  </defs>
+
+  <g id="DDR4">
+    <path id="PCB" fill="#2E7D32" fill-rule="evenodd" d="M0 0L800 0L800 60L792 60C789.791 60 788 61.7909 788 64L788 72C788 74.2091 789.791 76 792 76L800 76L800 95L792 95C789.791 95 788 96.7909 788 99L788 107C788 109.209 789.791 111 792 111L800 111L800 150L448 150L448 138C448 133.582 444.418 130 440 130C435.582 130 432 133.582 432 138L432 150L0 150L0 111L8 111C10.2091 111 12 109.209 12 107L12 99C12 96.7909 10.2091 95 8 95L0 95L0 76L8 76C10.2091 76 12 74.2091 12 72L12 64C12 61.7909 10.2091 60 8 60L0 60L0 0L0 0ZM7 130C7 127.239 9.23858 125 12 125C14.7614 125 17 127.239 17 130C17 132.761 14.7614 135 12 135C9.23858 135 7 132.761 7 130L7 130ZM783 130C783 127.239 785.239 125 788 125C790.761 125 793 127.239 793 130C793 132.761 790.761 135 788 135C785.239 135 783 132.761 783 130L783 130Z" />
+    
+    <g id="Chips">
+        <use xlink:href="#Chip" x="45" y="20" />
+        <use xlink:href="#Chip" x="232" y="20" />
+
+        <use xlink:href="#Chip" x="418" y="20" />
+        <use xlink:href="#Chip" x="605" y="20" />
+    </g>
+
+    <g id="EdgeConnectors">
+        <use xlink:href="#ConnectorBlock" x="25" y="130" />
+        <use xlink:href="#ConnectorBlock" x="105" y="130" />
+        <use xlink:href="#ConnectorBlock" x="185" y="130" />
+        <use xlink:href="#ConnectorBlock" x="265" y="130" />
+        <use xlink:href="#ConnectorBlock" x="345" y="130" />
+
+        <use xlink:href="#ConnectorBlock" x="460" y="130" />
+        <use xlink:href="#ConnectorBlock" x="540" y="130" />
+        <use xlink:href="#ConnectorBlock" x="620" y="130" />
+        <use xlink:href="#ConnectorBlock" x="700" y="130" />
+    </g>
+
+    <!-- <g id="Opening">    
+        <rect width="130" height="60" x="615" y="30" fill="#607D8B" />
+        <line x1="615" y1="90" x2="745" y2="90" stroke="#999" stroke-width="2" />
+        <line x1="744" y1="90" x2="744" y2="31" stroke="#999" stroke-width="2" />
+     </g> -->
+  </g>
+</svg>

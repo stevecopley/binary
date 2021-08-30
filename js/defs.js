@@ -1,8 +1,8 @@
 const colourInfo = {
-    8:  { name: '8-Bit',  code: { base: '2',  digits: 8  }, bits: { red: 3, green: 3, blue: 2, alpha: null } },
-    16: { name: '16-Bit', code: { base: '2',  digits: 16 }, bits: { red: 5, green: 6, blue: 5, alpha: null } },
-    24: { name: 'RGB',    code: { base: '16', digits: 6  }, bits: { red: 8, green: 8, blue: 8, alpha: null } },
-    32: { name: 'RGBA',   code: { base: '16', digits: 8  }, bits: { red: 8, green: 8, blue: 8, alpha: 8    } }
+    8:  { name: 'RGB',  code: { base: '2',  digits: 8  }, bits: { red: 3, green: 3, blue: 2, alpha: null } },
+    16: { name: 'RGB',  code: { base: '2',  digits: 16 }, bits: { red: 5, green: 6, blue: 5, alpha: null } },
+    24: { name: 'RGB',  code: { base: '16', digits: 6  }, bits: { red: 8, green: 8, blue: 8, alpha: null } },
+    32: { name: 'RGBA', code: { base: '16', digits: 8  }, bits: { red: 8, green: 8, blue: 8, alpha: 8    } }
 };
 
 const assemblyInfo = {

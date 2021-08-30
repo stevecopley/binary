@@ -24,26 +24,29 @@
                 <button onclick="bitCount = 24; setup();">24</button>
                 <button onclick="bitCount = 32; setup();">32</button>
                 <button onclick="bitCount = 64; setup();">64</button>
-                Bits <input type="number" min="1" max="64" size="2" value="8" id="bit-input">
+                <div>
+                    <label><input type="number" min="1" max="64" size="2" value="8" id="bit-input"> Bits</label>
+                    <label><input type="checkbox" onchange="toggleSigned();" id="signed-toggle"> Signed</label>
+                </div>
             </div>
 
             <div>            
                 <div>
-                    <label><input type="checkbox" onchange="toggleSigned();"      id="signed-toggle"> Signed</label>
                     <label><input type="checkbox" onchange="togglePowers();"      id="power-toggle">  Powers</label>
-                    <label><input type="checkbox" onchange="toggleColHeadings();" id="column-toggle"> Columns</label>
+                    <label><input type="checkbox" onchange="toggleColHeadings();" id="column-toggle"> Cols.</label>
+                    <label><input type="checkbox" onchange="toggleRAM();"         id="ram-toggle">    RAM</label>
                 </div>
 
                 <div>
-                    <label><input type="checkbox" onchange="toggleBin();" id="bin-toggle"> Binary</label>
-                    <label><input type="checkbox" onchange="toggleDec();" id="dec-toggle"> Decimal</label>
-                    <label><input type="checkbox" onchange="toggleHex();" id="hex-toggle"> Hexadecimal</label>
+                    <label><input type="checkbox" onchange="toggleBin();" id="bin-toggle"> Bin</label>
+                    <label><input type="checkbox" onchange="toggleDec();" id="dec-toggle"> Dec</label>
+                    <label><input type="checkbox" onchange="toggleHex();" id="hex-toggle"> Hex</label>
                 </div>
 
                 <div>
-                    <label><input type="checkbox" onchange="toggleChar();"     id="char-toggle">     Character</label>
-                    <label><input type="checkbox" onchange="toggleColour();"   id="colour-toggle">   Colour</label>
-                    <label><input type="checkbox" onchange="toggleAssembly();" id="assembly-toggle"> Instruction</label>
+                    <label><input type="checkbox" onchange="toggleChar();"     id="char-toggle">     Char</label>
+                    <label><input type="checkbox" onchange="toggleColour();"   id="colour-toggle">   Col.</label>
+                    <label><input type="checkbox" onchange="toggleAssembly();" id="assembly-toggle"> Code</label>
                 </div>
             </div>
             
@@ -52,11 +55,20 @@
                 <button onclick="decrementValue();">▼</button>
                 <button onclick="minimumValue();">Min</button>
                 <button onclick="maximumValue();">Max</button>
+                <button onclick="randomValue();">Rnd</button>
             </div>
         </nav>
     </header>
 
     <main>
+
+        <section id="ram">
+            <h2>Mem<span class="ending">ory</span> <span class="sub">(RAM)</span></h2>
+            <div id="ram-stick">
+                <img src="images/ddr4.svg" alt="RAM module">
+                <div id="ram-overlay"></div>
+            </div>
+        </section>
 
         <section id="thebits">
             <h2>Bits <span class="sub">(On / Off)</span></h2>
@@ -86,7 +98,7 @@
         </section>
 
         <section id="colour">
-            <h2><span id="colour-type">RGB</span><span class="ending"> Colour</span> <span class="sub">(<span id="colour-depth">24</span> Bit)</span></h2>
+            <h2>Col<span class="ending">our <span id="colour-type">RGB</span></span> <span class="sub">(<span id="colour-depth">24</span> Bit)</span></h2>
             <div id="colour-value" class="value">
                 <div id="colour-code" class="group">
                     <div id="colour-code-value">
@@ -114,7 +126,7 @@
         </section>
 
         <section id="assembly">
-            <h2>Assembly<span class="ending"> Code</span> <span class="sub">(<span id="asm-type">x86</span>)</span></h2>
+            <h2>Code<span class="ending"> Instruc.</span> <span class="sub">(<span id="asm-type">x86</span>)</span></h2>
             <div id="asm-value" class="value group">
                 <span id="asm-instruction">ADD</span>
             </div>
