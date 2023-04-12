@@ -14,4 +14,4 @@ Additionally, column headings can be shown with base powers and decimal values
 
 ---
 
-Take a look here: https://waimea-cpy.github.io/Binary/
+Take a look here: https://waimea-dt.github.io/Binary/
