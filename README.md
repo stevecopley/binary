@@ -11,3 +11,7 @@ Allows a binary number (of specified bit-length) to be entered (by toggling bits
 - Assembly op-codes
 
 Additionally, column headings can be shown with base powers and decimal values
+
+---
+
+Take a look here: https://waimea-cpy.github.io/Binary/
